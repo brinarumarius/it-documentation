@@ -8,7 +8,9 @@ The goal is not just to configure labels, but to understand the reasoning behind
 
 ## What this project covers
 
-Four scenarios of increasing complexity, each addressing a different aspect of information protection — from internal HR documents to external collaboration and executive communications. Each scenario includes a business justification, design decisions with trade-offs, configuration details, and observed behavior during testing.
+Two scenarios are presented, each addressing a different aspect of information protection. Scenario 1 focuses on internal HR document control with external distribution — demonstrating access control, permission granularity, and GDPR considerations. Scenario 2 focuses on external collaboration — demonstrating how protection works when multiple parties outside the organization need controlled access to the same document.
+
+Each scenario is documented in full: business justification, design decisions with trade-offs, configuration details, and observed behavior during testing. Depth over breadth — two complete scenarios demonstrate more than four superficial ones.
 
 ## Environment
 
