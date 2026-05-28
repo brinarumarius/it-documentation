@@ -100,11 +100,23 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 ---
 
-### Screenshot
+### Screenshots
 
-<!-- Add screenshot: label configuration -->
+**Initial state** — Sensitivity Labels before any configuration:
+
+![Initial state – no labels created](screenshots/scenario1-initial-state.png)
+
+<!-- TODO: Add screenshot – Access Control with final permissions -->
+<!-- TODO: Add screenshot – Label creation confirmation -->
+<!-- TODO: Add screenshot – Final label list -->
 
 ### Notes
+
+> **Note on test environment:**
+> This is a single-user personal tenant (contact@mariusbrinaru.de).
+> User roles are simulated as follows:
+> - `contact@mariusbrinaru.de` → represents internal recipients (HR staff, HR Manager, CFO, CEO)
+> - `brinaru.marius@gmail.com` → represents external employee
 
 ---
 
