@@ -102,60 +102,55 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 ### Screenshots
 
-**1. Initial state** — Sensitivity Labels before any configuration:
+**Initial state** — Sensitivity Labels before any configuration:
 
 ![Initial state – no labels created](screenshots/scenario1-initial-state.png)
 
 ---
 
-**2. Label 1 — Custom permissions for employee (external)**
-`brinaru.marius@gmail.com` — View Content, Print, Copy, Forward. Edit and Change Rights excluded:
+#### Label 1 — Payroll Standard
 
-![Custom permissions – employee](screenshots/label1-custom-permissions-employee.png)
+**Access Control** — Custom permissions assigned to both recipients.
+`brinaru.marius@gmail.com` (employee): View Content, Print, Copy, Forward.
+`contact@mariusbrinaru.de` (internal): View Content + View Rights (VIEWRIGHTSDATA):
 
----
+![Label 1 – Access Control final](screenshots/label1-access-control-final.png)
 
-**3. Label 1 — Custom permissions for internal recipients**
-`contact@mariusbrinaru.de` — View Rights (VIEWRIGHTSDATA) added. Both users configured:
+**Permission detail — employee** — Print, Copy, Forward enabled. Edit, Save, Change Rights excluded:
 
-![Custom permissions – internal + View Rights](screenshots/label1-custom-permissions-internal.png)
+![Label 1 – Custom permissions employee](screenshots/label1-custom-permissions-employee.png)
 
----
+**Permission detail — internal** — View Rights (VIEWRIGHTSDATA) enabled. All other rights excluded:
 
-**4. Label 1 — Access Control final state**
-Both recipients assigned with custom permissions. Offline access: 7 days. Expiry: Never:
+![Label 1 – Custom permissions internal](screenshots/label1-custom-permissions-internal.png)
 
-![Access Control – final](screenshots/label1-access-control-final.png)
+**Review & Finish** — Full configuration summary before creation:
 
----
+![Label 1 – Review & Finish](screenshots/label1-review-finish.png)
 
-**5. Label 1 — Creation confirmed**
+**Created** — Payroll-Standard label successfully created:
 
-![Label created – Payroll Standard](screenshots/label1-created-confirmation.png)
-
----
-
-**6. Label 1 — Final label list**
-Payroll-Standard visible in the tenant:
-
-![Final list – Payroll Standard](screenshots/label1-final-list.png)
+![Label 1 – Created](screenshots/label1-created-confirmation.png)
 
 ---
 
-**7. Label 2 — Access Control final state**
-`brinaru.marius@gmail.com` and `contact@mariusbrinaru.de` both with Custom permissions:
+#### Label 2 — Payroll Executive
 
-![Access Control – Payroll Executive](screenshots/label2-access-control-final.png)
+**Access Control** — Same structure as Label 1. Both recipients with custom permissions. General HR staff excluded:
 
----
+![Label 2 – Access Control final](screenshots/label2-access-control-final.png)
 
-**8. Label 2 — Review & Finish**
-Full summary before creation — Payroll-Executive, scope Files & Email, access control confirmed:
+**Review & Finish** — Payroll-Executive, scope Files & Email, access control confirmed:
 
-![Review & Finish – Payroll Executive](screenshots/label2-review-finish.png)
+![Label 2 – Review & Finish](screenshots/label2-review-finish.png)
 
 <!-- TODO: Add screenshot – Payroll Executive creation confirmation -->
-<!-- TODO: Add screenshot – Final list with both labels -->
+
+---
+
+#### Final state — Both labels
+
+<!-- TODO: Add screenshot – Sensitivity Labels list with Payroll-Standard and Payroll-Executive -->
 
 ### Notes
 
