@@ -156,13 +156,34 @@ Same permission structure as Label 1. General HR staff excluded:
 
 <!-- TODO: Add screenshot – Sensitivity Labels list with Payroll-Standard and Payroll-Executive -->
 
-### Notes
+### Test Environment Note
 
-> **Note on test environment:**
-> This is a single-user personal tenant (contact@mariusbrinaru.de).
-> User roles are simulated as follows:
-> - `contact@mariusbrinaru.de` → represents internal recipients (HR staff, HR Manager, CFO, CEO)
-> - `brinaru.marius@gmail.com` → represents external employee
+This project was built on a personal single-user Microsoft 365 Business Premium tenant (contact@mariusbrinaru.de). No additional user licenses were provisioned. Roles are simulated as follows:
+
+- `contact@mariusbrinaru.de` → represents all internal recipients (HR staff, HR Manager, CFO, CEO)
+- `brinaru.marius@gmail.com` → represents the external employee
+
+In a production environment, internal recipients would be defined as security groups (e.g. `HR-Team`, `Finance-Leadership`) rather than individual addresses.
+
+---
+
+### Publishing Policy — HR-Payroll-Policy
+
+Both labels were published under a single policy named **HR-Payroll-Policy** with the following deliberate settings:
+
+**Justification required to remove or downgrade a label** — enabled. Any attempt to lower the classification of a document requires the user to provide a written reason, creating an audit trail.
+
+**No default label configured** — payroll labels are applied manually by HR staff to specific documents. A default label would be appropriate for a General or Internal classification applied organization-wide, not for department-specific labels.
+
+**Email inherits highest priority label from attachments** — enabled. If a payroll document is attached to an unlabeled email, the email automatically inherits the document's label. This ensures the entire communication is protected, not just the attachment.
+
+---
+
+### Lessons Learned
+
+During configuration of Label 2, offline access was initially left on "Always" — the default setting — without conscious consideration. Upon review, this was corrected to 7 days, consistent with Label 1.
+
+A document of higher confidentiality (executive payroll) should never have weaker protection settings than a standard document. The error was caught at review stage, but in a production environment this type of misconfiguration could go unnoticed without a formal review checklist before publishing.
 
 ---
 
