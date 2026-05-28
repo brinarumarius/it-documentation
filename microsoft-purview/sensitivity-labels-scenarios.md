@@ -1,6 +1,21 @@
-# Sensitivity Labels – Practical Scenarios
+# Microsoft Purview — Sensitivity Labels: Practical Scenarios
 
-Hands-on documentation of 4 real-world sensitivity label configurations in Microsoft Purview.
+This project documents a hands-on exploration of Microsoft Purview Information Protection, focusing on Sensitivity Labels and their practical application in real-world business scenarios.
+
+Rather than following a generic tutorial, each scenario in this project is modeled after common organizational challenges — data classification, access control, external sharing, and compliance requirements — the kind of situations encountered in companies of any size.
+
+The goal is not just to configure labels, but to understand the reasoning behind each design decision: who needs access, what actions should be permitted or restricted, and why a particular configuration was chosen over alternatives.
+
+## What this project covers
+
+Four scenarios of increasing complexity, each addressing a different aspect of information protection — from internal HR documents to external collaboration and executive communications. Each scenario includes a business justification, design decisions with trade-offs, configuration details, and observed behavior during testing.
+
+## Environment
+
+| | |
+|---|---|
+| Tenant | Microsoft 365 Business Premium — contact@mariusbrinaru.de |
+| Portal | Microsoft Purview compliance portal |
 
 ---
 
