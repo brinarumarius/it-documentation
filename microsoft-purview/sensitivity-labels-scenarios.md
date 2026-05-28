@@ -112,25 +112,26 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 #### Label 1 — Payroll Standard
 
-**Access Control** — Custom permissions assigned to both recipients.
-`brinaru.marius@gmail.com` (employee): View Content, Print, Copy, Forward.
-`contact@mariusbrinaru.de` (internal): View Content + View Rights (VIEWRIGHTSDATA):
-
-![Label 1 – Access Control final](screenshots/label1-access-control-final.png)
-
-**Permission detail — employee** — Print, Copy, Forward enabled. Edit, Save, Change Rights excluded:
+**Step 1 — Permission detail: employee** (`brinaru.marius@gmail.com`)
+Print, Copy, Forward enabled. Edit, Save, Change Rights excluded. `contact@mariusbrinaru.de` already added as Viewer in the background:
 
 ![Label 1 – Custom permissions employee](screenshots/label1-custom-permissions-employee.png)
 
-**Permission detail — internal** — View Rights (VIEWRIGHTSDATA) enabled. All other rights excluded:
+**Step 2 — Permission detail: internal** (`contact@mariusbrinaru.de`)
+View Rights (VIEWRIGHTSDATA) enabled. Both recipients now configured:
 
 ![Label 1 – Custom permissions internal](screenshots/label1-custom-permissions-internal.png)
 
-**Review & Finish** — Full configuration summary before creation:
+**Step 3 — Access Control final state**
+Both recipients assigned. Expiry: Never. Offline access: 7 days:
+
+![Label 1 – Access Control final](screenshots/label1-access-control-final.png)
+
+**Step 4 — Review & Finish**
 
 ![Label 1 – Review & Finish](screenshots/label1-review-finish.png)
 
-**Created** — Payroll-Standard label successfully created:
+**Step 5 — Created**
 
 ![Label 1 – Created](screenshots/label1-created-confirmation.png)
 
@@ -138,15 +139,16 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 #### Label 2 — Payroll Executive
 
-**Access Control** — Same structure as Label 1. Both recipients with custom permissions. General HR staff excluded:
+**Step 1 — Access Control final state**
+Same permission structure as Label 1. General HR staff excluded:
 
 ![Label 2 – Access Control final](screenshots/label2-access-control-final.png)
 
-**Review & Finish** — Payroll-Executive, scope Files & Email, access control confirmed:
+**Step 2 — Review & Finish**
 
 ![Label 2 – Review & Finish](screenshots/label2-review-finish.png)
 
-<!-- TODO: Add screenshot – Payroll Executive creation confirmation -->
+<!-- TODO: Add screenshot – Payroll Executive created confirmation -->
 
 ---
 
