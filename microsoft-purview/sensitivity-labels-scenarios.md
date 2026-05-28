@@ -102,13 +102,60 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 ### Screenshots
 
-**Initial state** — Sensitivity Labels before any configuration:
+**1. Initial state** — Sensitivity Labels before any configuration:
 
 ![Initial state – no labels created](screenshots/scenario1-initial-state.png)
 
-<!-- TODO: Add screenshot – Access Control with final permissions -->
-<!-- TODO: Add screenshot – Label creation confirmation -->
-<!-- TODO: Add screenshot – Final label list -->
+---
+
+**2. Label 1 — Custom permissions for employee (external)**
+`brinaru.marius@gmail.com` — View Content, Print, Copy, Forward. Edit and Change Rights excluded:
+
+![Custom permissions – employee](screenshots/label1-custom-permissions-employee.png)
+
+---
+
+**3. Label 1 — Custom permissions for internal recipients**
+`contact@mariusbrinaru.de` — View Rights (VIEWRIGHTSDATA) added. Both users configured:
+
+![Custom permissions – internal + View Rights](screenshots/label1-custom-permissions-internal.png)
+
+---
+
+**4. Label 1 — Access Control final state**
+Both recipients assigned with custom permissions. Offline access: 7 days. Expiry: Never:
+
+![Access Control – final](screenshots/label1-access-control-final.png)
+
+---
+
+**5. Label 1 — Creation confirmed**
+
+![Label created – Payroll Standard](screenshots/label1-created-confirmation.png)
+
+---
+
+**6. Label 1 — Final label list**
+Payroll-Standard visible in the tenant:
+
+![Final list – Payroll Standard](screenshots/label1-final-list.png)
+
+---
+
+**7. Label 2 — Access Control final state**
+`brinaru.marius@gmail.com` and `contact@mariusbrinaru.de` both with Custom permissions:
+
+![Access Control – Payroll Executive](screenshots/label2-access-control-final.png)
+
+---
+
+**8. Label 2 — Review & Finish**
+Full summary before creation — Payroll-Executive, scope Files & Email, access control confirmed:
+
+![Review & Finish – Payroll Executive](screenshots/label2-review-finish.png)
+
+<!-- TODO: Add screenshot – Payroll Executive creation confirmation -->
+<!-- TODO: Add screenshot – Final list with both labels -->
 
 ### Notes
 
