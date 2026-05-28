@@ -21,31 +21,82 @@ Four scenarios of increasing complexity, each addressing a different aspect of i
 
 ## Scenario 1 – Internal Strict Document (HR / Payroll)
 
-**Use case:** Applied to employee pay slips. Two sub-labels handle different audience tiers within the same payroll workflow.
-
 ---
 
 ### Label 1 — Payroll Standard
 
-Applied to pay slips for regular employees.
+#### Business Justification
 
-**Internal audience:** All HR members, HR Manager, CFO, CEO — Viewer permission, no print, no copy, no edit.
+Monthly payroll documents for general staff contain personal and financial data protected under GDPR. These documents are generated as final outputs from the payroll system and must be distributed both internally to management and externally to each employee. Once generated, no modifications are permitted — any corrections must be made in the source payroll system, not in the document itself.
 
-**External audience:** The respective employee, delivered to their personal email address — Viewer permission. Once delivered, responsibility for further distribution lies with the employee.
+#### Audience
 
-**View Rights:** HR Manager, CFO, and CEO can see the access list on the document — no permission to modify it.
+| Recipient | Type |
+|---|---|
+| All HR team members, HR Manager, CFO, CEO | Internal |
+| The respective employee, via their personal email address | External |
+
+#### Permissions
+
+| Recipient | Permissions |
+|---|---|
+| All internal recipients | Viewer only — no print, no copy, no edit |
+| HR Manager, CFO, CEO | View Rights additionally granted — change rights deliberately excluded |
+| Employee (external) | View Content, Print, Copy, Forward — edit, save as unprotected, and change rights excluded |
+
+#### Design Decisions
+
+**Why Viewer for all internal recipients, including HR?**
+Payroll documents are final at the point of distribution. Granting edit rights to HR staff would create a risk of unauthorized modification after official generation. Corrections follow a formal process through the payroll system itself.
+
+**Why no Change Rights for management?**
+Permissions management is the responsibility of the Compliance Administrator, not individual managers. Granting Change Rights to CEO or CFO would technically allow them to escalate their own privileges or modify access for others — a risk that outweighs the convenience. View Rights are sufficient for oversight purposes.
+
+**Why does the employee receive broader permissions than internal management?**
+Internal recipients need to see the document, not use it freely. The employee, however, is the legal subject of the data contained in the document and has the right to use it freely — printing for personal records, sharing with a bank or accountant, or archiving it. Restricting these actions would be inconsistent with GDPR data subject rights.
+
+**Why allow external access at all?**
+Employees have a legal right to receive their own payroll documents. Restricting access to corporate email only would exclude employees who primarily use personal devices or who have left the company. Once delivered, responsibility for further distribution rests with the employee.
+
+> **Known limitation:** Once the employee accesses the document, Purview cannot prevent them from sharing an unprotected copy through a screenshot or other means. This is an accepted limitation — the label protects against unauthorized third-party access, not against the document owner's own actions.
 
 ---
 
 ### Label 2 — Payroll Executive
 
-Applied to pay slips for CEO, CFO, and HR Manager.
+#### Business Justification
 
-**Audience:** Exclusively HR Manager, CFO, CEO — Viewer permission, no print, no copy, no edit.
+Payroll documents for executives (CEO, CFO, HR Manager) require a higher level of confidentiality than standard payroll. These documents must not be accessible to general HR staff, as they contain compensation details for senior leadership. Access is restricted to the minimum set of authorized individuals consistent with the principle of least privilege.
 
-**View Rights:** The same three roles can see the access list.
+#### Audience
 
-The executive employee receives the document on the same principle as Label 1.
+| Recipient | Type |
+|---|---|
+| HR Manager, CFO, CEO only | Internal |
+| The respective executive, via their personal email address | External |
+
+#### Permissions
+
+| Recipient | Permissions |
+|---|---|
+| All internal recipients | Viewer only — no print, no copy, no edit |
+| HR Manager, CFO, CEO | View Rights additionally granted |
+| Executive employee (external) | View Content, Print, Copy, Forward — edit, save as unprotected, and change rights excluded |
+| Change Rights | Not granted to anyone at document level — managed exclusively at tenant level by Compliance Administrator |
+
+#### Design Decisions
+
+**Why exclude general HR staff?**
+While HR staff process standard payroll, executive compensation is typically handled by a smaller, explicitly authorized group. Broad HR access to executive documents creates unnecessary exposure and violates the principle of least privilege.
+
+**Why not grant HR Manager edit rights, given they may oversee corrections?**
+The same principle applies as in Label 1 — corrections are made upstream in the payroll system. If HR Manager needs to annotate or comment, that happens through a separate internal process, not by modifying the protected document.
+
+**Why does the executive employee receive the same broader permissions as in Label 1?**
+The legal reasoning is identical — the executive is the data subject and retains the right to use their own payroll document freely. Their seniority within the organization does not reduce their rights as an individual.
+
+**Why no Change Rights even for HR Manager?**
+HR Manager has View Rights for oversight. Granting Change Rights would allow privilege escalation — adding themselves or others with elevated permissions. This risk is not justified by any operational need, as permissions are managed centrally by the Compliance Administrator.
 
 ---
 
