@@ -106,7 +106,7 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 **Initial state** — Sensitivity Labels before any configuration:
 
-![Initial state – no labels created](screenshots/scenario1-initial-state.png)
+![Initial state – no labels created](screenshots/01-initial-state.png)
 
 ---
 
@@ -115,25 +115,25 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 **Step 1 — Adding recipients**
 `contact@mariusbrinaru.de` (internal) was added first — visible in the background as Viewer. In the foreground: employee permissions being configured — Print, Copy, Forward enabled. Edit, Save, Change Rights excluded:
 
-![Label 1 – Custom permissions employee](screenshots/label1-custom-permissions-employee.png)
+![Label 1 – Custom permissions employee](screenshots/02-label1-permissions-employee.png)
 
 **Step 2 — View Rights for internal** (`contact@mariusbrinaru.de`)
 View Rights (VIEWRIGHTSDATA) added to the internal recipient. Both recipients now in the list:
 
-![Label 1 – Custom permissions internal](screenshots/label1-custom-permissions-internal.png)
+![Label 1 – Custom permissions internal](screenshots/03-label1-permissions-internal.png)
 
 **Step 3 — Access Control final state**
 Both recipients assigned. Expiry: Never. Offline access: 7 days:
 
-![Label 1 – Access Control final](screenshots/label1-access-control-final.png)
+![Label 1 – Access Control final](screenshots/04-label1-access-control-final.png)
 
 **Step 4 — Review & Finish**
 
-![Label 1 – Review & Finish](screenshots/label1-review-finish.png)
+![Label 1 – Review & Finish](screenshots/05-label1-review-finish.png)
 
 **Step 5 — Created**
 
-![Label 1 – Created](screenshots/label1-created-confirmation.png)
+![Label 1 – Created](screenshots/06-label1-created.png)
 
 ---
 
@@ -142,11 +142,11 @@ Both recipients assigned. Expiry: Never. Offline access: 7 days:
 **Step 1 — Access Control final state**
 Same permission structure as Label 1. General HR staff excluded:
 
-![Label 2 – Access Control final](screenshots/label2-access-control-final.png)
+![Label 2 – Access Control final](screenshots/08-label2-access-control-final.png)
 
 **Step 2 — Review & Finish**
 
-![Label 2 – Review & Finish](screenshots/label2-review-finish.png)
+![Label 2 – Review & Finish](screenshots/09-label2-review-finish.png)
 
 <!-- TODO: Add screenshot – Payroll Executive created confirmation -->
 
