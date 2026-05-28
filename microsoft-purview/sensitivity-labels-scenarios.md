@@ -112,13 +112,13 @@ HR Manager has View Rights for oversight. Granting Change Rights would allow pri
 
 #### Label 1 — Payroll Standard
 
-**Step 1 — Permission detail: employee** (`brinaru.marius@gmail.com`)
-Print, Copy, Forward enabled. Edit, Save, Change Rights excluded. `contact@mariusbrinaru.de` already added as Viewer in the background:
+**Step 1 — Adding recipients**
+`contact@mariusbrinaru.de` (internal) was added first — visible in the background as Viewer. In the foreground: employee permissions being configured — Print, Copy, Forward enabled. Edit, Save, Change Rights excluded:
 
 ![Label 1 – Custom permissions employee](screenshots/label1-custom-permissions-employee.png)
 
-**Step 2 — Permission detail: internal** (`contact@mariusbrinaru.de`)
-View Rights (VIEWRIGHTSDATA) enabled. Both recipients now configured:
+**Step 2 — View Rights for internal** (`contact@mariusbrinaru.de`)
+View Rights (VIEWRIGHTSDATA) added to the internal recipient. Both recipients now in the list:
 
 ![Label 1 – Custom permissions internal](screenshots/label1-custom-permissions-internal.png)
 
