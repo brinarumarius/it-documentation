@@ -21,32 +21,37 @@ Four scenarios of increasing complexity, each addressing a different aspect of i
 
 ## Scenario 1 – Internal Strict Document (HR / Payroll)
 
-**Use case:** A document containing salary data or HR records, accessible only to specific roles within the organization.
+**Use case:** Applied to employee pay slips. Two sub-labels handle different audience tiers within the same payroll workflow.
 
-### Label configuration
+---
 
-| Setting | Value |
-|---|---|
-| Label name | `Internal - Highly Confidential` |
-| Scope | Files, Emails |
-| Encryption | Enabled |
-| Assign permissions | Specific users/groups only |
-| Allowed roles | HR Department, Finance, C-Level |
-| Content expiry | Never |
-| Allow offline access | Limited (7 days) |
+### Label 1 — Payroll Standard
 
-### Steps
+Applied to pay slips for regular employees.
 
-1. Open **Microsoft Purview** → **Information Protection** → **Labels**
-2. Create new label → Name: `Internal - Highly Confidential`
-3. Under **Encryption** → Enable → Assign permissions now
-4. Add groups: `HR-Team@company.com`, `Finance@company.com`
-5. Set permissions: **Co-Owner** for HR, **Reviewer** for Finance
-6. Publish label via **Label Policies** → assign to HR and Finance users
+**Internal audience:** All HR members, HR Manager, CFO, CEO — Viewer permission, no print, no copy, no edit.
+
+**External audience:** The respective employee, delivered to their personal email address — Viewer permission. Once delivered, responsibility for further distribution lies with the employee.
+
+**View Rights:** HR Manager, CFO, and CEO can see the access list on the document — no permission to modify it.
+
+---
+
+### Label 2 — Payroll Executive
+
+Applied to pay slips for CEO, CFO, and HR Manager.
+
+**Audience:** Exclusively HR Manager, CFO, CEO — Viewer permission, no print, no copy, no edit.
+
+**View Rights:** The same three roles can see the access list.
+
+The executive employee receives the document on the same principle as Label 1.
+
+---
 
 ### Screenshot
 
-<!-- Add screenshot: label encryption settings -->
+<!-- Add screenshot: label configuration -->
 
 ### Notes
 
