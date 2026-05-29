@@ -187,116 +187,146 @@ A document of higher confidentiality (executive payroll) should never have weake
 
 ---
 
-## Scenario 2 – External Client Document (View Only, Expiry, No Print)
+## Scenario 2 — External Client Collaboration (Tax Incentive Process)
 
-**Use case:** A document sent to a client. The client can read it, but cannot print, copy, or access it after the expiry date.
+### Business Justification
 
-### Label configuration
+This scenario models a real-world workflow in which a consulting firm manages a multi-phase engagement with an external client for tax incentive recovery. The process involves three distinct document types, each with different audiences, sensitivity levels, and handling requirements.
 
-| Setting | Value |
-|---|---|
-| Label name | `External - Client Confidential` |
-| Scope | Files |
-| Encryption | Enabled |
-| Assign permissions | Authenticated users (external allowed) |
-| Allowed roles | Viewer only |
-| Content expiry | 30 days from labeling |
-| Allow offline access | Never |
-| Print | Disabled |
-| Copy/paste | Disabled |
-
-### Steps
-
-1. Create label → Name: `External - Client Confidential`
-2. Under **Encryption** → Enable → Let users assign permissions: **Do Not Forward**
-   - Or: Assign permissions now → Add external domain → `Viewer` only
-3. Set **content expiration**: 30 days
-4. Disable offline access
-5. Under **Content marking** → add footer: `Confidential – External Use Only`
-6. Publish to users who send documents to clients
-
-### Screenshot
-
-<!-- Add screenshot: expiry and viewer permissions settings -->
-
-### Notes
+The three phases are: contract distribution and signing, confidential client data transfer to the scientific consultancy team, and final dossier submission to the German Tax Authority (Finanzamt). Each phase requires a separate label because the audience, permitted actions, and risk profile differ significantly between them.
 
 ---
 
-## Scenario 3 – Collaborative Document with External Partner (Editor with Restrictions)
+### Note on Simulated Identities
 
-**Use case:** A shared document with a partner organization. They can edit but cannot share further or remove the label.
+Unlike Scenario 1, where a single personal tenant was used to simulate all roles, Scenario 2 involves a more complex multi-party workflow. To clearly illustrate the different actors and their respective access levels, fictional email addresses have been used as role placeholders:
 
-### Label configuration
-
-| Setting | Value |
+| Role | Simulated address |
 |---|---|
-| Label name | `External - Partner Collaboration` |
-| Scope | Files |
-| Encryption | Enabled |
-| Assign permissions | Specific external domain |
-| Allowed roles | Co-Author (edit, no re-share) |
-| Forward / Share | Disabled |
-| Label removal | Requires justification |
+| Sales Representative (internal) | `sales.rep@novadocs-demo.de` |
+| Scientific Consultancy team (internal) | `sc.team@novadocs-demo.de` |
+| SC Manager (internal) | `sc.manager@novadocs-demo.de` |
+| External client | `client@techventures-demo.de` |
 
-### Steps
-
-1. Create label → Name: `External - Partner Collaboration`
-2. Under **Encryption** → Assign permissions now
-3. Add external domain: `partner-company.com` → Permission level: **Co-Author**
-   - Co-Author allows: edit, save — does NOT allow: share, change permissions
-4. Under **Label policies** → Enable **Require users to provide justification to remove a label**
-5. Optional: add watermark with user's email via **Content marking**
-6. Publish to relevant internal teams (e.g. Project Managers, Account Managers)
-
-### Screenshot
-
-<!-- Add screenshot: Co-Author permission level for external domain -->
-
-### Notes
+These addresses do not exist and were used exclusively to make permission assignments readable and meaningful in screenshots. In a production environment, internal roles would be defined as security groups rather than individual addresses.
 
 ---
 
-## Scenario 4 – Confidential Email (Label Applied to Email, Not Just Files)
+### Label 1 — CE-Contract
 
-**Use case:** An email containing sensitive information (legal, HR, financial). The label prevents forwarding and encrypts the email body and attachments.
+#### Business Justification
 
-### Label configuration
+Before engagement begins, Sales sends the client a contract for review and physical signature. The document is a final export — Sales has already signed digitally within the firm's contract management system. The client must be able to read, print, and copy the document in order to sign physically and return it. The client must not be able to modify the content or distribute it to third parties before signature — the contract is a confidential commercial document that belongs to both parties only after countersignature.
 
-| Setting | Value |
+#### Audience
+
+| Recipient | Type |
 |---|---|
-| Label name | `Confidential - Internal Email` |
-| Scope | **Emails** (and Files) |
-| Encryption | Enabled |
-| Do Not Forward | Enabled |
-| Encrypt-Only | Optional alternative |
-| Auto-labeling | Optional: trigger on keywords (e.g. "salary", "NDA") |
+| Sales Representative | Internal |
+| External client | External |
 
-### Steps
+#### Permissions
 
-1. Create label → Name: `Confidential - Internal Email`
-2. Under **Scope** → select **Email** (in addition to Files)
-3. Under **Encryption** → Enable → Choose **Do Not Forward**
-   - Recipients can read the email but cannot forward, print, or copy content
-4. Optional – Auto-labeling:
-   - Go to **Auto-labeling policies**
-   - Trigger condition: email contains sensitive info types (e.g. `EU Social Security Number`, `Credit Card Number`)
-   - Apply label automatically
-5. Publish label to all users or specific groups
+| Recipient | Permissions |
+|---|---|
+| Sales Representative (internal) | Viewer only — document is final, no modifications permitted after export |
+| External client | View Content, Print, Copy — Forward and Edit deliberately excluded |
 
-### Screenshot
+#### Design Decisions
 
-<!-- Add screenshot: Do Not Forward setting and email scope selection -->
+**Why no Edit for the client?**
+The contract has been finalized and signed by Sales before distribution. Granting Edit rights would allow the client to modify clauses, terms, or figures — invalidating the legal validity of the document. Negotiation happens before signing, not after.
 
-### Notes
+**Why no Forward for the client?**
+Unlike a payroll document — which is the employee's own data — a contract is a confidential commercial agreement. The client has no legitimate reason to distribute it to third parties before countersignature. After both parties have signed, the document is exchanged through formal channels outside of Purview protection.
+
+**Why Viewer for Sales internally?**
+The document is a final export. No internal modifications are permitted post-export. Any amendments require a new version generated in the contract management system.
+
+> **Note on digital signatures and RMS compatibility:**
+> Qualified electronic signature tools (DocuSign, Adobe Sign, eIDAS-compliant platforms) cannot process RMS-encrypted documents, as they require unobstructed access to the file content. This label is therefore applied to the contract during internal review and client distribution phases only. The final countersigned document is stored internally under a separate archival label outside the scope of this project.
 
 ---
 
-## Summary
+### Label 2 — CE-ClientData
 
-| Scenario | Label Name | External Access | Expiry | Print | Edit |
-|---|---|---|---|---|---|
-| HR / Payroll | Internal - Highly Confidential | No | Never | Yes (internal) | Co-Owner / Reviewer |
-| Client Document | External - Client Confidential | Yes (view only) | 30 days | No | No |
-| Partner Collaboration | External - Partner Collaboration | Yes (edit) | Never | No | Co-Author |
-| Confidential Email | Confidential - Internal Email | No forward | Never | No | N/A |
+#### Business Justification
+
+Once the contract is signed, the client provides confidential project data to the Scientific Consultancy team — including proprietary research details, financial figures, and technical documentation required to build the tax incentive dossier. This data is highly sensitive: if it were accessible to unauthorized internal staff, it would represent both a GDPR violation and a breach of client trust. Access is restricted strictly to the SC team on a need-to-know basis.
+
+#### Audience
+
+| Recipient | Type |
+|---|---|
+| Scientific Consultancy team | Internal |
+| External client (sending data) | External |
+
+#### Permissions
+
+| Recipient | Permissions |
+|---|---|
+| SC team (internal) | View Content, Copy, Forward — Edit, Print, and Change Rights excluded |
+| External client | View Content, Print, Copy, Forward — Edit and Change Rights excluded |
+| Sales and all other departments | No access |
+
+#### Design Decisions
+
+**Why is Sales excluded?**
+Sales initiated the engagement but has no operational role in the scientific consultancy phase. Access to client proprietary data beyond what is necessary for the engagement creates unnecessary exposure. This is a direct application of the principle of least privilege across internal departments.
+
+**Why Copy and Forward for SC team?**
+The SC team works actively with client project data — copying figures, referencing technical details, and coordinating internally. Copy is necessary for operational use. Forward is permitted within the team because all SC addresses are the only ones on the access list — forwarding to anyone outside SC results in an access denial at the RMS level. The protection mechanism enforces the boundary, not a written policy.
+
+**Why does the client have Forward rights here but not in CE-Contract?**
+In this phase the client is the data sender, not the recipient of a firm-owned document. Forward rights are necessary for the client to transmit project files to the SC team and potentially to sub-contacts within their own organization who hold relevant technical data.
+
+**Why no Print for SC team?**
+SC team consumes and analyzes client data digitally. Print rights are excluded to minimize the risk of physical copies of confidential client data existing outside controlled systems. The client retains Print rights as they are the data owner.
+
+---
+
+### Label 3 — CE-TaxSubmission
+
+#### Business Justification
+
+The final tax incentive dossier is submitted to the German Tax Authority (Finanzamt) for evaluation. The German Tax Authority operates on government systems that are incompatible with RMS-encrypted documents — they cannot open, process, or archive protected files within their internal infrastructure. Protection must therefore be removed before transmission.
+
+Rather than allowing any team member to remove protection, this action is explicitly restricted to the SC Manager — the senior accountable role for the submission. The removal is logged in the Purview Audit Log, creating a clear chain of custody: who removed protection, when, and on which document.
+
+#### Audience
+
+| Recipient | Type |
+|---|---|
+| SC team | Internal |
+| SC Manager | Internal — elevated rights |
+| German Tax Authority (Finanzamt) | External — receives unprotected final document |
+
+#### Permissions
+
+| Recipient | Permissions |
+|---|---|
+| SC team | Viewer only |
+| SC Manager | Full Control — authorized to remove RMS protection for official transmission |
+| German Tax Authority (Finanzamt) | Not added to label — receives document after protection is removed by SC Manager |
+
+#### Design Decisions
+
+**Why Full Control for SC Manager and not just Change Rights?**
+Change Rights alone allows modifying the permission list but does not allow saving the document in an unprotected format. Full Control is required to perform the final step — exporting a clean, unencrypted version for the German Tax Authority. This right is granted to exactly one role and is documented explicitly.
+
+**Why is the German Tax Authority not added as an external recipient?**
+The German Tax Authority does not operate on Microsoft identity infrastructure. Even with a one-time passcode mechanism, there is no guarantee that a government processing system can handle RMS-protected files. Once submitted, the document becomes an official administrative record — restricting what a tax authority can do with a document they are legally entitled to process is neither practical nor appropriate.
+
+**Why is this design more secure than simply sending an unprotected document from the start?**
+The document is protected throughout its entire internal lifecycle — during drafting, review, and SC processing. Protection is only removed at the last possible moment, by an explicitly authorized role, with a logged action. This is the principle of late binding — apply maximum protection for as long as operationally possible.
+
+> **Audit trail note:**
+> The act of removing RMS protection by SC Manager is recorded in the Microsoft Purview Audit Log. This creates documented accountability — if the unprotected document were later mishandled or intercepted in transit, it is demonstrably clear that the document left the organization's control intentionally, through an authorized action, at a specific point in time.
+
+---
+
+### Screenshots
+
+<!-- TODO: Add screenshots for Scenario 2 labels -->
+
+### Notes
